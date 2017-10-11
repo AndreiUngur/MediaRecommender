@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-ng-app="andrei_page">
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Unica+One|Vollkorn" rel="stylesheet">
+  <link rel="shortcut icon" href="http://www.iconj.com/ico/d/z/dzwucinopk.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Angular -->
+  <script src="scripts/angular/angular.min.js"></script>
+  
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <title>Recommendation Bot!</title>
+  </head>
+
+  <body>
+    <div data-ng-controller='controller'>
+      <div class="jumbotron text-center" ng-style="myStyle">
+        <header>
+          <h1>Andrei Ungur</h1>
+        </header>
+      </div>
+      
+      <div class="text-center" id="chatbox">
+        <form id="bot">
+          <input type="text" hint="Say anything...">
+          <input type="submit" value="Send" onClick="requestAnswer(this.form)">
+        </form>
+
+        <br>
+        <span id="botname">Bot: </span><span id="response">...</span><br>
+      </div>
+    </div>
+
+
+  <script src="scripts/angular_main.js"></script>
+  <script src="scripts/bot-controller.js"></script>
+
+  <!--footer>
+    Andreipage is maintained by https://github.com/AndreiUngur
+  </footer-->
+  </body>
+  </html>

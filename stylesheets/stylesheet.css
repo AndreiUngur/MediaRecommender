@@ -1,0 +1,29 @@
+.big{
+  font-size: 1.5vw
+}
+
+body{
+  font-size:1.3vw;
+  line-height: 5vh;
+}
+
+h1{
+  font-family: 'Unica One', cursive;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-transform:uppercase;
+  cursor:default;
+}
+
+.jumbotron{
+  background-color: #000033;
+  color:#ffffff;
+  transition: all linear 0.5s;
+  margin-bottom:10vh;
+}
+
+#botname{
+  font-weight: bold;
+}

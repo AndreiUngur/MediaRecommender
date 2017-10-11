@@ -1,0 +1,28 @@
+{
+  "name": "recommend",
+  "version": "1.0.0",
+  "description": "recommendation bot for music, movies, and other",
+  "main": "index.html",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreiUngur/MediaBot.git"
+  },
+  "keywords": [
+    "media",
+    "bot"
+  ],
+  "author": "Andrei Ungur",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/AndreiUngur/MediaBot/issues"
+  },
+  "homepage": "https://github.com/AndreiUngur/MediaBot#readme",
+  "dependencies": {
+    "apiai": "^4.0.3",
+    "express": "^4.16.2",
+    "uuid": "^3.1.0"
+  }
+}
