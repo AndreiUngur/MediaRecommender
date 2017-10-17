@@ -14,8 +14,7 @@ app.get('/uniqueId', function(req, res){
 });
 
 app.get('/nlp', function(req, res){
-    var message;
-    bot.apiai(message,res);
+    bot.apiai(res);
 });
 
 app.listen(80);

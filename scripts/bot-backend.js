@@ -7,9 +7,7 @@ const unique_id = uuidv1();
 const app = apiai(api_ai_key);
 var response_from_server; //Used to send the response from the server
 
-var test_request = app.textRequest('who is bob marley', {
-    sessionId: unique_id
-});
+var test_request;
 
 var Requests = {
 
@@ -17,7 +15,12 @@ var Requests = {
         return unique_id;
     },
 
-    apiai:function apiAiGet(form,res){
+    apiai:function apiAiGet(res){
+        //Test request
+        test_request = app.textRequest('who is bob marley', {
+            sessionId: unique_id
+        });
+        
         response_from_server = res;
         ApiAiRequest();
         //Track requests being made on the back-end.
