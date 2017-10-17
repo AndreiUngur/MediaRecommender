@@ -7,6 +7,10 @@ body{
   line-height: 5vh;
 }
 
+#dev-tools{
+  display:none;
+}
+
 h1{
   font-family: 'Unica One', cursive;
   font-weight: 500;
