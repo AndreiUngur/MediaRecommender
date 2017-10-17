@@ -1,3 +1,5 @@
+var nlp_output;
+
 function requestAnswer(form){
   console.log(form);
   console.log(form.message.value);
@@ -6,26 +8,33 @@ function requestAnswer(form){
     console.log("Showing dev tools");
     return;
   }
-  $.get("http://localhost/uniqueId", function(data){
-    alert(data);
-  });
+  getNLP(form.message.value);
 }
 
 function getStatus(){
-    getRequest("status");
+    getRequest("status",false);
 }
 
 function getUID(){
-    getRequest("uniqueId");
+    getRequest("uniqueId",false);
 }
 
-function getNLP(){
-    getRequest("nlp");
+function getNLP(message){
+    getRequest("nlp",true);
 }
 
-function getRequest(endpoint){
+function getRequest(endpoint,is_nlp){
     $.get("http://localhost/"+endpoint, function(data){
-        alert(data);
+        nlp_output = data;
+        console.log("is nlp request? "+is_nlp);
+        if(is_nlp){
+            console.log("nlp result:"+nlp_output.result);
+            var bot_reply = nlp_output.result.fulfillment.speech;
+            console.log(bot_reply);
+            //Bot's reply becomes visible to the user
+            $('#response').text(bot_reply);
+        }
+        console.log(data);
     });
 }
 
