@@ -8,7 +8,7 @@ function requestAnswer(form){
     console.log("Showing dev tools");
     return;
   }
-  getNLP(form.message.value);
+  postNLP(form.message.value);
 }
 
 function getStatus(){
@@ -23,19 +23,40 @@ function getNLP(message){
     getRequest("nlp",true);
 }
 
+function postNLP(message){
+    postRequest("nlp","message="+message,true);
+}
+
 function getRequest(endpoint,is_nlp){
     $.get("http://localhost/"+endpoint, function(data){
-        nlp_output = data;
-        console.log("is nlp request? "+is_nlp);
         if(is_nlp){
-            console.log("nlp result:"+nlp_output.result);
-            var bot_reply = nlp_output.result.fulfillment.speech;
-            console.log(bot_reply);
-            //Bot's reply becomes visible to the user
-            $('#response').text(bot_reply);
+            handleNLPOutput(data);
         }
         console.log(data);
     });
+}
+
+/*
+* "is_nlp" might be made more generic (copy pasting code..)
+* or I might find a more modular way to
+* make requests to the different API's
+* At the moment, only handling post for "nlp"
+*/
+function postRequest(endpoint,query,is_nlp){
+    $.post("http://localhost/"+endpoint+"?"+query, function(data){
+        if(is_nlp){
+            handleNLPOutput(data);
+        }
+        console.log(data);
+    });
+}
+
+function handleNLPOutput(nlp_output){
+    console.log("NLP result:"+nlp_output.result);
+    var bot_reply = nlp_output.result.fulfillment.speech;
+    console.log(bot_reply);
+    //Bot's reply becomes visible to the user
+    $('#response').text(bot_reply);
 }
 
 function showDevTools(){
