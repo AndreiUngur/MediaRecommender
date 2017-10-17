@@ -21,6 +21,12 @@ app.post('/nlp', function(req, res){
     bot.apiai(res,req.query);
 });
 
+//Might not be exposed to client, only for testing at the moment.
+app.post('/lastfm', function(req, res){
+    console.log("LastFM Query");
+    bot.lastfm(res,req.query);
+});
+
 app.listen(80);
 
 console.log("Server running on localhost");

@@ -52,11 +52,9 @@ function postRequest(endpoint,query,is_nlp){
 }
 
 function handleNLPOutput(nlp_output){
-    console.log("NLP result:"+nlp_output.result);
-    var bot_reply = nlp_output.result.fulfillment.speech;
-    console.log(bot_reply);
+    console.log("NLP result:"+nlp_output);
     //Bot's reply becomes visible to the user
-    $('#response').text(bot_reply);
+    $('#response').text(nlp_output);
 }
 
 function showDevTools(){
