@@ -19,6 +19,9 @@ const lfm = new lastfm({
     'secret':lfm_secret
 });
 
+//Global variables
+var rest_of_artists; //"similar" returns the first 3 found, this will be used if the user wants more.
+
 var response_from_server; //Used to send the response from the server
 
 var test_request;
@@ -68,12 +71,28 @@ var Requests = {
 function ApiAiRequest(request){
     request.on('response',function(response){
         //Return a response to the client.
-        var extra_data;
-        switch(response.result.metadata.intentName){
+        var intent = response.result.metadata.intentName;
+        var input_artist = response.result.parameters.Artist;
+        switch(intent){
             case "artist_info":
-                lfm.artist.getInfo({'artist':response.result.parameters.Artist},function(err,artist){
+                lfm.artist.getInfo({'artist':input_artist},function(err,artist){
                     bio = artist.bio.summary;
                     response_from_server.send(bio);
+                });
+                break;
+            case "artist_recommend":
+            /* Look into how different the output string is compared to the input
+            *  We shouldn't recommend to the user an artist "Bob marley & the wailers"
+            *  if he asked for more artists like "Bob Marley".
+            */
+                lfm.artist.getSimilar({'artist':input_artist},function(err, similar){
+                    /* For now, I simply shuffle the list of artists returned by last fm.
+                    * In the future, also add a list with the "rest" of artists and
+                    * return from those for subsequent queries, to avoid repeating artists. */
+                    var first_three_artists = shuffle(similar.artist).slice(0,3).map(function(x){
+                        return x.name;
+                    });
+                    response_from_server.send("You should look into "+first_three_artists);
                 });
                 break;
             default:
@@ -90,6 +109,17 @@ function ApiAiRequest(request){
     });     
 
     request.end();
+}
+
+//Implementation of Fisher-Yates shuffle
+function shuffle(input){
+    for(var i=0;i<input.length;i++){
+        var rand = Math.floor(Math.random()*i);
+        var temp = input[rand];
+        input[rand] = input[i];
+        input[i] = temp; 
+    }
+    return input;
 }
 
 module.exports = Requests;
