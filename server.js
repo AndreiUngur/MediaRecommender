@@ -27,6 +27,6 @@ app.post('/lastfm', function(req, res){
     bot.lastfm(res,req.query);
 });
 
-app.listen(80);
+app.listen(1234);
 
 console.log("Server running on localhost");

@@ -4,7 +4,7 @@ var server = require('../server.js');
 
 describe('Basic testing', function(){    
     it('Status', function(done) {
-        request('http://localhost/status' , function(error, response, body) {
+        request('http://localhost:1234/status' , function(error, response, body) {
             console.log(error);
             console.log(response.statusCode);
             console.log(body);
