@@ -4,7 +4,8 @@
   "description": "recommendation bot for music, movies, and other",
   "main": "index.html",
   "scripts": {
-    "test": "none"
+    "start":"node server.js",
+    "test" : "node integrationtests.js"
   },
   "repository": {
     "type": "git",
