@@ -13,7 +13,13 @@ const lfm_secret = env.lastfm_secret;
 const unique_id = uuidv1(); //todo: one unique id per client
 
 //API initialization
-const app = apiai(api_ai_key);
+if(api_ai_key){
+    //Api.ai key is empty on git, but the bot is initialized for testing.
+    //This causes a crash which is avoided by initializing the api.ai app
+    //only if the key is defined.
+    const app = apiai(api_ai_key);
+    console.log("Initialized API.AI with key: "+api_ai_key);
+}
 const lfm = new lastfm({
     'api_key':lfm_key,
     'secret':lfm_secret
