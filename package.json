@@ -4,8 +4,8 @@
   "description": "recommendation bot for music, movies, and other",
   "main": "index.html",
   "scripts": {
-    "start":"node server.js",
-    "test" : "node integrationtests.js"
+    "start": "node server.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -25,9 +25,12 @@
     "apiai": "^4.0.3",
     "apiai-promise": "^1.0.0",
     "async": "^2.5.0",
+    "chai": "^4.1.2",
     "express": "^4.16.2",
     "lastfmapi": "^0.1.1",
+    "mocha": "^4.0.1",
     "newsapi": "^2.0.1",
+    "request": "^2.83.0",
     "uuid": "^3.1.0"
   }
 }
