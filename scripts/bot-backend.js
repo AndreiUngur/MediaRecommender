@@ -90,9 +90,9 @@ function ApiAiRequest(request){
                     * In the future, also add a list with the "rest" of artists and
                     * return from those for subsequent queries, to avoid repeating artists. */
                     var first_three_artists = shuffle(similar.artist).slice(0,3).map(function(x){
-                        return x.name;
+                        return " "+x.name;
                     });
-                    response_from_server.send("You should look into "+first_three_artists);
+                    response_from_server.send("You should look into"+first_three_artists);
                 });
                 break;
             default:
