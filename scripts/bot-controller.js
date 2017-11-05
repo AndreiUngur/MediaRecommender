@@ -1,4 +1,5 @@
 var nlp_output;
+const uri_root = "https://media-recommender.herokuapp.com/"
 
 function requestAnswer(form){
   console.log(form);
@@ -28,7 +29,7 @@ function postNLP(message){
 }
 
 function getRequest(endpoint,is_nlp){
-    $.get("http://localhost/"+endpoint, function(data){
+    $.get(uri_root+endpoint, function(data){
         if(is_nlp){
             handleNLPOutput(data);
         }
@@ -43,7 +44,7 @@ function getRequest(endpoint,is_nlp){
 * At the moment, only handling post for "nlp"
 */
 function postRequest(endpoint,query,is_nlp){
-    $.post("http://localhost/"+endpoint+"?"+query, function(data){
+    $.post(uri_root+endpoint+"?"+query, function(data){
         if(is_nlp){
             handleNLPOutput(data);
         }
