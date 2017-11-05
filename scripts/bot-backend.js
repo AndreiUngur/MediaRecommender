@@ -8,10 +8,10 @@ const news_api = require('newsapi');
 const env = require('./env.json');
 
 //Parameters needed for API's
-const api_ai_key = env.apiai_client;
-const lfm_key = env.lastfm_key;
-const news_key = env.newsapi_key;
-const lfm_secret = env.lastfm_secret;
+const api_ai_key = process.env.apiai_client || env.apiai_client;
+const lfm_key = process.env.lastfm_key || env.lastfm_key;
+const news_key = process.env.newsapi_key || env.newsapi_key;
+const lfm_secret = process.env.lastfm_secret || env.lastfm_secret;
 const unique_id = uuidv1(); //todo: one unique id per client
 
 //API initialization
