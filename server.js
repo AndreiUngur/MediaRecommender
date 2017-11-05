@@ -33,6 +33,6 @@ app.post('/news', function(req, res){
     bot.newspost(res,req.query);
 });
 
-app.listen(1234);
+app.listen(80);
 
 console.log("Server running on localhost");
