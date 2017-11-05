@@ -1,5 +1,6 @@
 var nlp_output;
 const uri_root = "https://media-recommender.herokuapp.com/"
+const possible_fillers = ["Let me think...","Hmm... I'm thinking...","Let's see...","Hmm..."];
 
 function requestAnswer(form){
   console.log(form);
@@ -9,7 +10,13 @@ function requestAnswer(form){
     console.log("Showing dev tools");
     return;
   }
+  $('#response').text(getFiller());
   postNLP(form.message.value);
+}
+
+function getFiller(){
+    var rand = Math.floor(Math.random()*possible_fillers.length);
+    return(possible_fillers[rand]);
 }
 
 function getStatus(){
