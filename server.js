@@ -33,6 +33,7 @@ app.post('/news', function(req, res){
     bot.newspost(res,req.query);
 });
 
-app.listen(80);
+var port = process.env.PORT || 1234
+app.listen(port);
 
-console.log("Server running on localhost");
+console.log("Server running on port: "+port);
